@@ -11,6 +11,7 @@ jobs:
     outputs:
       skip: ${{ steps.c.outputs.skip }}
     steps:
+      - uses: actions/checkout@v4
       - id: c
         uses: ./
   test:
