@@ -1,0 +1,16 @@
+name: CI cost
+on:
+  schedule:
+    - cron: '23 6 * * 1'
+  workflow_dispatch:
+jobs:
+  cost:
+    runs-on: ubuntu-latest
+    permissions:
+      actions: read
+      issues: write
+      contents: read
+    steps:
+      - uses: Huckcity/ci-cost-report@v1
+        with:
+          issue: true

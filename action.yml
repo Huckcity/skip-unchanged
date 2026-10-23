@@ -1,0 +1,35 @@
+name: Skip Unchanged
+description: Skip scheduled (cron) workflow runs when the commit was already built successfully, so nightly builds stop burning minutes on unchanged code
+author: Adam Gibbons
+branding:
+  icon: fast-forward
+  color: green
+inputs:
+  token:
+    description: GitHub token used to read workflow runs (contents/actions read)
+    default: ${{ github.token }}
+  events:
+    description: Comma-separated event names on which skipping is considered. Other events never skip.
+    default: schedule
+  max-age-hours:
+    description: Rebuild anyway if the last successful run of this commit is older than this many hours (0 = never rebuild unchanged code)
+    default: '168'
+  workflows:
+    description: Comma-separated workflow file names whose successful runs count as "already built". Default is the current workflow only.
+    default: ''
+  conclusions:
+    description: Comma-separated run conclusions that count as already built
+    default: success
+  cancel:
+    description: Cancel the current run instead of only setting the output (the run then shows as cancelled, not skipped)
+    default: 'false'
+outputs:
+  skip:
+    description: '"true" when the commit has already been built and the rest of the workflow can be skipped'
+  reason:
+    description: Why the decision was made
+  previous-run-url:
+    description: URL of the earlier successful run of this commit, when found
+runs:
+  using: node24
+  main: dist/index.js

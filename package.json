@@ -1,0 +1,13 @@
+{
+  "name": "skip-unchanged",
+  "version": "1.0.0",
+  "private": true,
+  "description": "GitHub Action: skip scheduled workflow runs when the commit was already built successfully",
+  "type": "module",
+  "scripts": {
+    "test": "node --test test/*.test.js",
+    "build": "esbuild src/main.js --bundle --platform=node --target=node24 --format=esm --outfile=dist/index.js"
+  },
+  "devDependencies": { "esbuild": "^0.25.10" },
+  "license": "MIT"
+}
