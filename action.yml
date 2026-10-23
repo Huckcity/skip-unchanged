@@ -1,5 +1,5 @@
 name: Skip Unchanged
-description: Skip scheduled (cron) workflow runs when the commit was already built successfully, so nightly builds stop burning minutes on unchanged code
+description: Skip scheduled (cron) runs when the commit was already built successfully, so nightly builds stop burning minutes
 author: Adam Gibbons
 branding:
   icon: fast-forward
